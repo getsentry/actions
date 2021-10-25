@@ -1,4 +1,4 @@
-# sentry-what-changed
+# sentry-add-what-changed-check
 
 
 Uses https://github.com/dorny/paths-filter to determine what files were changed in a commit and then creates a GitHub Check

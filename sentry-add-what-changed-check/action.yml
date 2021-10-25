@@ -3,7 +3,7 @@
 #
 # This is used in sentry + getsentry, and requires a `.github/file-filters.yml` configuration with a `frontend` and `backend` collection.
 #
-name: "Check What Changed"
+name: "Add What Changed Check"
 description: 'Adds a GitHub Check to a commit that corresponds to the types of files that were changed ("only frontend", "only backend", "fullstack")'
 runs:
   using: composite
