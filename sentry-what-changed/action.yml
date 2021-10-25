@@ -1,11 +1,14 @@
-# Add a GitHub Check to commits in "master" that specifies the "type" of files that were changed
-# ex: "only frontend", "only backed", or "fullstack"
-
+# Uses https://github.com/dorny/paths-filter to determine what files were changed in a commit and then creates a GitHub Check
+# for the commit that corresponds to the type of files that were changed: "only frontend", "only backend", "fullstack"
+#
+# This is used in sentry + getsentry, and requires a `.github/file-filters.yml` configuration with a `frontend` and `backend` collection.
+#
+name: "Check What Changed"
+description: 'Adds a GitHub Check to a commit that corresponds to the types of files that were changed ("only frontend", "only backend", "fullstack")'
 runs:
   using: composite
 
   steps:
-
   - name: Check for file changes
     uses: getsentry/paths-filter@master
     id: changes
