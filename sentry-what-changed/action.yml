@@ -18,7 +18,7 @@ runs:
     uses: actions/github-script@v5
     with:
       script: |
-        require('./deploy.js').updateChangeType({
+        require('${{ github.action_path }}/deploy.js').updateChangeType({
           github,
           context,
           fileChanges: ${{ toJson(steps.changes.outputs) }}
