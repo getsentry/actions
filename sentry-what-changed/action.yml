@@ -1,0 +1,25 @@
+# Add a GitHub Check to commits in "master" that specifies the "type" of files that were changed
+# ex: "only frontend", "only backed", or "fullstack"
+
+runs:
+  using: composite
+
+  steps:
+
+  - name: Check for file changes
+    uses: getsentry/paths-filter@master
+    id: changes
+    with:
+      list-files: shell
+      token: ${{ github.token }}
+      filters: .github/file-filters.yml
+
+  - name: Create GitHub job
+    uses: actions/github-script@v5
+    with:
+      script: |
+        require('./deploy.js').updateChangeType({
+          github,
+          context,
+          fileChanges: ${{ toJson(steps.changes.outputs) }}
+        });
